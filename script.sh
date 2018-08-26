@@ -94,6 +94,7 @@ configureWallet() {
     rpcuser=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`
     rpcpass=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`
     echo -e "rpcuser=${rpcuser}\nrpcpassword=${rpcpass}" > ~/$COINCORE/$COINCONFIG
+    echo -e "\addnode=128.199.33.244\addnode=188.166.54.195"  > ~/$COINCORE/$COINCONFIG
     $COINDAEMON -daemon > /dev/null 2>&1
     sleep 10
 
@@ -103,7 +104,7 @@ configureWallet() {
     $COINDAEMON stop > /dev/null 2>&1
     sleep 10
 
-    echo -e "rpcuser=${rpcuser}\nrpcpassword=${rpcpass}\nrpcport=${COINRPCPORT}\nrpcallowip=127.0.0.1\nrpcthreads=8\nlisten=1\nserver=1\ndaemon=1\nstaking=0\ndiscover=1\nexternalip=${mnip}:${COINPORT}\nmasternode=1\nmasternodeprivkey=${mnkey}\addnode=128.199.33.244\addnode=188.166.54.195" > ~/$COINCORE/$COINCONFIG
+    echo -e "rpcuser=${rpcuser}\nrpcpassword=${rpcpass}\nrpcport=${COINRPCPORT}\nrpcallowip=127.0.0.1\nrpcthreads=8\nlisten=1\nserver=1\ndaemon=1\nstaking=0\ndiscover=1\nexternalip=${mnip}:${COINPORT}\nmasternode=1\nmasternodeprivkey=${mnkey}" > ~/$COINCORE/$COINCONFIG
     echo -e "${NONE}${GREEN}* Done${NONE}";
 }
 
